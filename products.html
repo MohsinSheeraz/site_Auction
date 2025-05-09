@@ -118,7 +118,7 @@
       </div>
     </div>
 
-    <!-- Updated Header -->
+    <!-- Header -->
     <header class="bg-white shadow-md">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-4">
@@ -224,7 +224,7 @@
             >
             <a
               href="sell-product.html"
-              class="bg-primary-600 text-white px-6 py-2 rounded-md hover:bg-primary-700 transition duration-300 font-medium"
+              class="bg-gradient-to-r from-primary-600 to-secondary-700 text-white px-6 py-2 rounded-md hover:bg-primary-700 transition duration-300 font-medium"
               >Sell Your Product</a
             >
           </div>
@@ -342,7 +342,7 @@
     </header>
 
     <!-- Page Header -->
-    <div class="bg-primary-600 text-white">
+    <div class="bg-gradient-to-r from-primary-600 to-secondary-700 text-white">
       <div class="container mx-auto px-4 py-16">
         <h1 class="text-4xl font-bold mb-4" id="page-title">All Auctions</h1>
         <p class="text-xl opacity-90" id="page-description">
@@ -394,421 +394,232 @@
     <section class="py-12">
       <div class="container mx-auto px-4">
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
           id="products-grid"
-        >
-          <!-- Product cards will be dynamically inserted here -->
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+        ></div>
 
-          <!-- Product Card 1 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-          >
+        <script>
+          const products = [
+            {
+              id: 1,
+              name: "Vintage Leica Camera",
+              image:
+                "https://imgs.search.brave.com/GIj3OFf-Tc7knRn9sr6DiKs6oqQJk6uHf9ddM2Gbql4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/anVzdC1mb3VuZC1h/LWxlaWNhLW0zLWNh/bWVyYS1pbi1teS1n/cmFuZGZhdGhlcnMt/Ym94ZXMtd2hhdHMt/djAtN3Z1eXh0b2h4/NW1hMS5qcGc_d2lk/dGg9NDAzMiZmb3Jt/YXQ9cGpwZyZhdXRv/PXdlYnAmcz0yZDk0/NzA1MzM0ZWRlY2Y2/YzhiOTFiNWY3NjM4/NTM1Y2FlOWY1NjMy",
+              featured: true,
+              endTime: "2d 5h",
+              category: "Antiques",
+              categoryColor: "green",
+              description:
+                "A rare vintage Leica camera from the 1950s in excellent condition with original leather case.",
+              currentBid: 1250,
+              basePrice: 1000,
+              bidderAvatar: "https://randomuser.me/api/portraits/men/32.jpg",
+              bidCount: 12,
+            },
+            {
+              id: 2,
+              name: "Nintendo 64 Bundle",
+              image:
+                "https://imgs.search.brave.com/f5frTSAh9QTcD2ruOZ-Rd8D2cWyZ-GnYDkCWWPrZsXk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pNS53/YWxtYXJ0aW1hZ2Vz/LmNvbS9zZW8vTmlu/dGVuZG8tNjQtTjY0/LUdhbWUtQnVuZGxl/LU5GTC1CbGl0ei0y/MDAwLTIwMDEtMTk5/Ny1OVFNDLVUtQy1V/Uy1DYW5hZGEtQ2Fy/dF9hOTE0MzAzMS1h/ZTkzLTRlOWItYTVh/Yi0yYWFmNDg4YTYw/MGEuYThhMzFhZmFh/N2YxNmJlNTNlNGQ0/MmM3MGVjNzk4MmMu/anBlZz9vZG5IZWln/aHQ9NTgwJm9kbldp/ZHRoPTU4MCZvZG5C/Zz1GRkZGRkY",
+              featured: false,
+              endTime: "4d 12h",
+              category: "Retro Games",
+              categoryColor: "blue",
+              description:
+                "Original Nintendo 64 console with 4 controllers and 10 classic games including Mario 64 and Zelda.",
+              currentBid: 320,
+              basePrice: 250,
+              bidderAvatar: "https://randomuser.me/api/portraits/women/44.jpg",
+              bidCount: 8,
+            },
+            {
+              id: 3,
+              name: "iPhone 13 Pro Max",
+              image:
+                "https://imgs.search.brave.com/-YrvSlvyTghKc0BxJKdw90ZewIjmNMcfc6_t_TJUxZ8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YXR0LmNvbS9zY21z/YXNzZXRzL2dsb2Jh/bC9kZXZpY2VzL3Bo/b25lcy9hcHBsZS9h/cHBsZS1pcGhvbmUt/MTMtcHJvLW1heC9D/YXJvdXNlbC9zaWVy/cmFibHVlLzYxOTZE/LTEucG5n",
+              featured: false,
+              endTime: "1d 3h",
+              category: "Phones",
+              categoryColor: "purple",
+              description:
+                "Apple iPhone 13 Pro Max, 256GB, Pacific Blue, unlocked and in perfect condition.",
+              currentBid: 780,
+              basePrice: 650,
+              bidderAvatar: "https://randomuser.me/api/portraits/men/17.jpg",
+              bidCount: 20,
+            },
+            {
+              id: 4,
+              name: "Abstract Oil Painting",
+              image:
+                "https://imgs.search.brave.com/4DshLOJeiZwhLpwTp3c0DgzM5eui2rvJ6787PPRFY88/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ldm9s/dmVhcnRpc3QuY29t/L2Jsb2cvd3AtY29u/dGVudC91cGxvYWRz/LzIwMTkvMDIvYWJz/dHJhY3Qtb2lsLXBh/aW50aW5nLTUtMTAy/NHg3MjYuanBn",
+              featured: false,
+              endTime: "6d 8h",
+              category: "Art",
+              categoryColor: "pink",
+              description:
+                'Original abstract oil painting by emerging artist J. Smith, 36" x 48", gallery wrapped canvas.',
+              currentBid: 420,
+              basePrice: 350,
+              bidderAvatar: "https://randomuser.me/api/portraits/women/55.jpg",
+              bidCount: 5,
+            },
+            {
+              id: 5,
+              name: "MacBook Pro M1",
+              image:
+                "https://imgs.search.brave.com/FxNRXJdFRCFm7Cj4yHw4n3fpGQ9CoVHjqbSQHYTwsZg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dGhld2lyZWN1dHRl/ci5jb20vd3AtY29u/dGVudC9tZWRpYS8y/MDIwLzEyL21hY2Jv/b2stMjA0OHB4LTEw/LmpwZz9hdXRvPXdl/YnAmcXVhbGl0eT03/NSZ3aWR0aD0xMDI0",
+              featured: false,
+              endTime: "3d 9h",
+              category: "Computers",
+              categoryColor: "blue",
+              description:
+                "Apple MacBook Pro with M1 chip, 16GB RAM, 512GB SSD, Space Gray, like new condition.",
+              currentBid: 1050,
+              basePrice: 900,
+              bidderAvatar: "https://randomuser.me/api/portraits/men/68.jpg",
+              bidCount: 15,
+            },
+            {
+              id: 6,
+              name: "Criterion Collection DVDs",
+              image:
+                "https://imgs.search.brave.com/vdyvZ9Ize4HNFP8B_sr73cYt-sZC7bHGddtSDpXocJc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMwLnNyY2RuLmNv/bS93b3JkcHJlc3Mv/d3AtY29udGVudC91/cGxvYWRzLzIwMjIv/MTEvR29kemlsbGEz/LmpwZw",
+              featured: false,
+              endTime: "5d 14h",
+              category: "DVD",
+              categoryColor: "yellow",
+              description:
+                "Complete set of 50 Criterion Collection DVDs including rare and out-of-print titles.",
+              currentBid: 580,
+              basePrice: 500,
+              bidderAvatar: "https://randomuser.me/api/portraits/women/83.jpg",
+              bidCount: 10,
+            },
+            {
+              id: 7,
+              name: "Earthbound SNES",
+              image:
+                "https://imgs.search.brave.com/F4-PLP1Ia5iGK_2N8fb25hRbofsayVkFjkRWGDOJ5MY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtbmEuc3NsLWlt/YWdlcy1hbWF6b24u/Y29tL2ltYWdlcy9J/LzQxYXQyWnBzeGhM/LmpwZw",
+              featured: true,
+              endTime: "2d 18h",
+              category: "Retro Games",
+              categoryColor: "blue",
+              description:
+                "Original Earthbound for SNES with box, manual, and strategy guide. Excellent condition.",
+              currentBid: 850,
+              basePrice: 700,
+              bidderAvatar: "https://randomuser.me/api/portraits/men/29.jpg",
+              bidCount: 18,
+            },
+            {
+              id: 8,
+              name: "Bronze Sculpture",
+              image:
+                "https://imgs.search.brave.com/D72Jy10fOdilqEMl_luk2D6DtOk5BIiUXihjQRMEO0o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzQwMjk0ODgyL3Iv/aWwvNGU3NWUwLzU1/MzE4MjAzMTkvaWxf/NjAweDYwMC41NTMx/ODIwMzE5XzZpa2Mu/anBn",
+              featured: false,
+              endTime: "8d 5h",
+              category: "Art",
+              categoryColor: "pink",
+              description:
+                'Contemporary bronze sculpture by local artist, 24" tall, limited edition 3 of 10.',
+              currentBid: 1800,
+              basePrice: 1500,
+              bidderAvatar: "https://randomuser.me/api/portraits/women/49.jpg",
+              bidCount: 6,
+            },
+          ];
+
+          const grid = document.getElementById("products-grid");
+          products.forEach((p) => {
+            const diff = p.currentBid - p.basePrice;
+            const diffLabel = (diff >= 0 ? "+" : "") + diff;
+            const badge = p.featured
+              ? `<span class="bg-primary-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">Featured</span>`
+              : "";
+            grid.insertAdjacentHTML(
+              "beforeend",
+              `
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
             <div class="relative">
               <img
-                src="https://imgs.search.brave.com/GIj3OFf-Tc7knRn9sr6DiKs6oqQJk6uHf9ddM2Gbql4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/anVzdC1mb3VuZC1h/LWxlaWNhLW0zLWNh/bWVyYS1pbi1teS1n/cmFuZGZhdGhlcnMt/Ym94ZXMtd2hhdHMt/djAtN3Z1eXh0b2h4/NW1hMS5qcGc_d2lk/dGg9NDAzMiZmb3Jt/YXQ9cGpwZyZhdXRv/PXdlYnAmcz0yZDk0/NzA1MzM0ZWRlY2Y2/YzhiOTFiNWY3NjM4/NTM1Y2FlOWY1NjMy"
-                alt="Vintage Camera"
-                class="w-full h-64 object-cover"
+                src="${p.image}"
+                alt="${p.name}"
+                class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
               />
-              <div class="absolute top-4 left-4">
-                <span
-                  class="bg-primary-600 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Featured</span
-                >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute top-4 left-4 flex space-x-2">
+                ${badge}
               </div>
               <div class="absolute bottom-4 right-4">
-                <span
-                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Ends in 2d 5h</span
-                >
+                <div class="bg-black/80 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center shadow-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  Ends in ${p.endTime}
+                </div>
+              </div>
+              <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="flex items-center space-x-2">
+                  <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                  </div>
+                  <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="p-6">
               <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-semibold text-gray-800">
-                  Vintage Leica Camera
+                <h3 class="text-xl font-semibold text-gray-800 group-hover:text-primary-600 transition duration-300">
+                  ${p.name}
                 </h3>
-                <span
-                  class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded"
-                  >Antiques</span
-                >
+                <span class="bg-${p.categoryColor}-100 text-${p.categoryColor}-800 text-xs font-semibold px-2.5 py-1 rounded">
+                  ${p.category}
+                </span>
               </div>
-              <p class="text-gray-600 mb-4 line-clamp-2">
-                A rare vintage Leica camera from the 1950s in excellent
-                condition with original leather case.
-              </p>
-              <div class="flex justify-between items-center mb-4">
+              <p class="text-gray-600 mb-6 line-clamp-2">${p.description}</p>
+              <div class="flex justify-between items-center mb-6">
                 <div>
                   <p class="text-gray-500 text-sm">Current Bid</p>
-                  <p class="text-2xl font-bold text-gray-800">$1,250</p>
+                  <div class="flex items-end">
+                    <p class="text-2xl font-bold text-gray-800">$${p.currentBid}</p>
+                    <span class="text-green-500 text-sm ml-2 font-medium">${diffLabel}</span>
+                  </div>
                 </div>
                 <div class="text-right">
                   <p class="text-gray-500 text-sm">Base Price</p>
-                  <p class="text-lg font-semibold text-gray-700">$1,000</p>
+                  <p class="text-lg font-semibold text-gray-700">$${p.basePrice}</p>
                 </div>
               </div>
-              <a
-                href="product-detail.html?id=1"
-                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
-                >View Auction</a
-              >
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <div class="w-8 h-8 rounded-full overflow-hidden border-2 border-white">
+                    <img src="${p.bidderAvatar}" alt="Bidder" class="w-full h-full object-cover" />
+                  </div>
+                  <span class="text-sm text-gray-500">${p.bidCount} bids</span>
+                </div>
+                <a
+                  href="product-detail.html?id=${p.id}"
+                  class="inline-flex items-center bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition duration-300 shadow-md hover:shadow-lg"
+                >
+                  <span>View Auction</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-
-          <!-- Product Card 2 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-          >
-            <div class="relative">
-              <img
-                src="https://imgs.search.brave.com/f5frTSAh9QTcD2ruOZ-Rd8D2cWyZ-GnYDkCWWPrZsXk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pNS53/YWxtYXJ0aW1hZ2Vz/LmNvbS9zZW8vTmlu/dGVuZG8tNjQtTjY0/LUdhbWUtQnVuZGxl/LU5GTC1CbGl0ei0y/MDAwLTIwMDEtMTk5/Ny1OVFNDLVUtQy1V/Uy1DYW5hZGEtQ2Fy/dF9hOTE0MzAzMS1h/ZTkzLTRlOWItYTVh/Yi0yYWFmNDg4YTYw/MGEuYThhMzFhZmFh/N2YxNmJlNTNlNGQ0/MmM3MGVjNzk4MmMu/anBlZz9vZG5IZWln/aHQ9NTgwJm9kbldp/ZHRoPTU4MCZvZG5C/Zz1GRkZGRkY"
-                alt="Gaming Console"
-                class="w-full h-64 object-cover"
-              />
-              <div class="absolute bottom-4 right-4">
-                <span
-                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Ends in 4d 12h</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-semibold text-gray-800">
-                  Nintendo 64 Bundle
-                </h3>
-                <span
-                  class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded"
-                  >Retro Games</span
-                >
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-2">
-                Original Nintendo 64 console with 4 controllers and 10 classic
-                games including Mario 64 and Zelda.
-              </p>
-              <div class="flex justify-between items-center mb-4">
-                <div>
-                  <p class="text-gray-500 text-sm">Current Bid</p>
-                  <p class="text-2xl font-bold text-gray-800">$320</p>
-                </div>
-                <div class="text-right">
-                  <p class="text-gray-500 text-sm">Base Price</p>
-                  <p class="text-lg font-semibold text-gray-700">$250</p>
-                </div>
-              </div>
-              <a
-                href="product-detail.html?id=2"
-                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
-                >View Auction</a
-              >
-            </div>
-          </div>
-
-          <!-- Product Card 3 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-          >
-            <div class="relative">
-              <img
-                src="https://imgs.search.brave.com/-YrvSlvyTghKc0BxJKdw90ZewIjmNMcfc6_t_TJUxZ8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YXR0LmNvbS9zY21z/YXNzZXRzL2dsb2Jh/bC9kZXZpY2VzL3Bo/b25lcy9hcHBsZS9h/cHBsZS1pcGhvbmUt/MTMtcHJvLW1heC9D/YXJvdXNlbC9zaWVy/cmFibHVlLzYxOTZE/LTEucG5n"
-                alt="Smartphone"
-                class="w-full h-64 object-cover"
-              />
-              <div class="absolute top-4 left-4">
-                <span
-                  class="bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Hot</span
-                >
-              </div>
-              <div class="absolute bottom-4 right-4">
-                <span
-                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Ends in 1d 3h</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-semibold text-gray-800">
-                  iPhone 13 Pro Max
-                </h3>
-                <span
-                  class="bg-purple-100 text-purple-800 text-xs font-semibold px-2 py-1 rounded"
-                  >Phones</span
-                >
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-2">
-                Apple iPhone 13 Pro Max, 256GB, Pacific Blue, unlocked and in
-                perfect condition.
-              </p>
-              <div class="flex justify-between items-center mb-4">
-                <div>
-                  <p class="text-gray-500 text-sm">Current Bid</p>
-                  <p class="text-2xl font-bold text-gray-800">$780</p>
-                </div>
-                <div class="text-right">
-                  <p class="text-gray-500 text-sm">Base Price</p>
-                  <p class="text-lg font-semibold text-gray-700">$650</p>
-                </div>
-              </div>
-              <a
-                href="product-detail.html?id=3"
-                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
-                >View Auction</a
-              >
-            </div>
-          </div>
-
-          <!-- Product Card 4 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-          >
-            <div class="relative">
-              <img
-                src="https://imgs.search.brave.com/4DshLOJeiZwhLpwTp3c0DgzM5eui2rvJ6787PPRFY88/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ldm9s/dmVhcnRpc3QuY29t/L2Jsb2cvd3AtY29u/dGVudC91cGxvYWRz/LzIwMTkvMDIvYWJz/dHJhY3Qtb2lsLXBh/aW50aW5nLTUtMTAy/NHg3MjYuanBn"
-                alt="Abstract Painting"
-                class="w-full h-64 object-cover"
-              />
-              <div class="absolute bottom-4 right-4">
-                <span
-                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Ends in 6d 8h</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-semibold text-gray-800">
-                  Abstract Oil Painting
-                </h3>
-                <span
-                  class="bg-pink-100 text-pink-800 text-xs font-semibold px-2 py-1 rounded"
-                  >Art</span
-                >
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-2">
-                Original abstract oil painting by emerging artist J. Smith, 36"
-                x 48", gallery wrapped canvas.
-              </p>
-              <div class="flex justify-between items-center mb-4">
-                <div>
-                  <p class="text-gray-500 text-sm">Current Bid</p>
-                  <p class="text-2xl font-bold text-gray-800">$420</p>
-                </div>
-                <div class="text-right">
-                  <p class="text-gray-500 text-sm">Base Price</p>
-                  <p class="text-lg font-semibold text-gray-700">$350</p>
-                </div>
-              </div>
-              <a
-                href="product-detail.html?id=4"
-                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
-                >View Auction</a
-              >
-            </div>
-          </div>
-
-          <!-- Product Card 5 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-          >
-            <div class="relative">
-              <img
-                src="https://imgs.search.brave.com/FxNRXJdFRCFm7Cj4yHw4n3fpGQ9CoVHjqbSQHYTwsZg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dGhld2lyZWN1dHRl/ci5jb20vd3AtY29u/dGVudC9tZWRpYS8y/MDIwLzEyL21hY2Jv/b2stMjA0OHB4LTEw/LmpwZz9hdXRvPXdl/YnAmcXVhbGl0eT03/NSZ3aWR0aD0xMDI0"
-                alt="Laptop"
-                class="w-full h-64 object-cover"
-              />
-              <div class="absolute bottom-4 right-4">
-                <span
-                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Ends in 3d 9h</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-semibold text-gray-800">
-                  MacBook Pro M1
-                </h3>
-                <span
-                  class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded"
-                  >Computers</span
-                >
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-2">
-                Apple MacBook Pro with M1 chip, 16GB RAM, 512GB SSD, Space Gray,
-                like new condition.
-              </p>
-              <div class="flex justify-between items-center mb-4">
-                <div>
-                  <p class="text-gray-500 text-sm">Current Bid</p>
-                  <p class="text-2xl font-bold text-gray-800">$1,050</p>
-                </div>
-                <div class="text-right">
-                  <p class="text-gray-500 text-sm">Base Price</p>
-                  <p class="text-lg font-semibold text-gray-700">$900</p>
-                </div>
-              </div>
-              <a
-                href="product-detail.html?id=5"
-                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
-                >View Auction</a
-              >
-            </div>
-          </div>
-
-          <!-- Product Card 6 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-          >
-            <div class="relative">
-              <img
-                src="https://imgs.search.brave.com/vdyvZ9Ize4HNFP8B_sr73cYt-sZC7bHGddtSDpXocJc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMwLnNyY2RuLmNv/bS93b3JkcHJlc3Mv/d3AtY29udGVudC91/cGxvYWRzLzIwMjIv/MTEvR29kemlsbGEz/LmpwZw"
-                alt="DVD Collection"
-                class="w-full h-64 object-cover"
-              />
-              <div class="absolute bottom-4 right-4">
-                <span
-                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Ends in 5d 14h</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-semibold text-gray-800">
-                  Criterion Collection DVDs
-                </h3>
-                <span
-                  class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-1 rounded"
-                  >DVD</span
-                >
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-2">
-                Complete set of 50 Criterion Collection DVDs including rare and
-                out-of-print titles.
-              </p>
-              <div class="flex justify-between items-center mb-4">
-                <div>
-                  <p class="text-gray-500 text-sm">Current Bid</p>
-                  <p class="text-2xl font-bold text-gray-800">$580</p>
-                </div>
-                <div class="text-right">
-                  <p class="text-gray-500 text-sm">Base Price</p>
-                  <p class="text-lg font-semibold text-gray-700">$500</p>
-                </div>
-              </div>
-              <a
-                href="product-detail.html?id=6"
-                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
-                >View Auction</a
-              >
-            </div>
-          </div>
-
-          <!-- Product Card 7 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-          >
-            <div class="relative">
-              <img
-                src="https://imgs.search.brave.com/F4-PLP1Ia5iGK_2N8fb25hRbofsayVkFjkRWGDOJ5MY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtbmEuc3NsLWlt/YWdlcy1hbWF6b24u/Y29tL2ltYWdlcy9J/LzQxYXQyWnBzeGhM/LmpwZw"
-                alt="Retro Game"
-                class="w-full h-64 object-cover"
-              />
-              <div class="absolute top-4 left-4">
-                <span
-                  class="bg-primary-600 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Rare</span
-                >
-              </div>
-              <div class="absolute bottom-4 right-4">
-                <span
-                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Ends in 2d 18h</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-semibold text-gray-800">
-                  Earthbound SNES
-                </h3>
-                <span
-                  class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded"
-                  >Retro Games</span
-                >
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-2">
-                Original Earthbound for SNES with box, manual, and strategy
-                guide. Excellent condition.
-              </p>
-              <div class="flex justify-between items-center mb-4">
-                <div>
-                  <p class="text-gray-500 text-sm">Current Bid</p>
-                  <p class="text-2xl font-bold text-gray-800">$850</p>
-                </div>
-                <div class="text-right">
-                  <p class="text-gray-500 text-sm">Base Price</p>
-                  <p class="text-lg font-semibold text-gray-700">$700</p>
-                </div>
-              </div>
-              <a
-                href="product-detail.html?id=7"
-                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
-                >View Auction</a
-              >
-            </div>
-          </div>
-
-          <!-- Product Card 8 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-          >
-            <div class="relative">
-              <img
-                src="https://imgs.search.brave.com/D72Jy10fOdilqEMl_luk2D6DtOk5BIiUXihjQRMEO0o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzQwMjk0ODgyL3Iv/aWwvNGU3NWUwLzU1/MzE4MjAzMTkvaWxf/NjAweDYwMC41NTMx/ODIwMzE5XzZpa2Mu/anBn"
-                alt="Sculpture"
-                class="w-full h-64 object-cover"
-              />
-              <div class="absolute bottom-4 right-4">
-                <span
-                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
-                  >Ends in 8d 5h</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-semibold text-gray-800">
-                  Bronze Sculpture
-                </h3>
-                <span
-                  class="bg-pink-100 text-pink-800 text-xs font-semibold px-2 py-1 rounded"
-                  >Art</span
-                >
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-2">
-                Contemporary bronze sculpture by local artist, 24" tall, limited
-                edition 3 of 10.
-              </p>
-              <div class="flex justify-between items-center mb-4">
-                <div>
-                  <p class="text-gray-500 text-sm">Current Bid</p>
-                  <p class="text-2xl font-bold text-gray-800">$1,800</p>
-                </div>
-                <div class="text-right">
-                  <p class="text-gray-500 text-sm">Base Price</p>
-                  <p class="text-lg font-semibold text-gray-700">$1,500</p>
-                </div>
-              </div>
-              <a
-                href="product-detail.html?id=8"
-                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
-                >View Auction</a
-              >
-            </div>
-          </div>
-        </div>
+          `
+            );
+          });
+        </script>
 
         <!-- Pagination -->
         <div class="mt-12 flex justify-center">
