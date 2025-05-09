@@ -1,0 +1,1095 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BidLuxe - Premium Auction Platform</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
+              },
+              secondary: {
+                50: "#fdf4ff",
+                100: "#fae8ff",
+                200: "#f5d0fe",
+                300: "#f0abfc",
+                400: "#e879f9",
+                500: "#d946ef",
+                600: "#c026d3",
+                700: "#a21caf",
+                800: "#86198f",
+                900: "#701a75",
+              },
+            },
+            animation: {
+              "bounce-slow": "bounce 2s infinite",
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/css">
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      @keyframes slide-in-left {
+        0% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slide-in-right {
+        0% {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      #bid.animate {
+        animation: slide-in-left 1s ease-out forwards;
+      }
+
+      #luxe.animate {
+        animation: slide-in-right 1s ease-out forwards;
+        animation-delay: 0.2s;
+      }
+
+      .dropdown:hover > .dropdown-menu,
+      .dropdown-menu:hover {
+        display: block;
+      }
+
+      /* 3. Mobile menu slides in from left */
+      #mobile-menu {
+        @apply fixed top-0 left-0 h-full w-64 bg-white
+         transform -translate-x-full transition-transform
+         duration-300 ease-in-out z-50;
+      }
+      #mobile-menu.open {
+        @apply translate-x-0;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Loader (unchanged) -->
+    <div
+      id="loader"
+      class="fixed inset-0 bg-gray-200 z-50 flex items-center justify-center transition-opacity duration-700"
+    >
+      <div class="relative flex text-7xl md:text-9xl font-bold text-gray-800">
+        <span id="bid" class="absolute right-0 opacity-0">Bid</span>
+        <span id="luxe" class="absolute left-0 opacity-0 text-primary-600"
+          >Luxe</span
+        >
+      </div>
+    </div>
+
+    <!-- Updated Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <!-- Logo -->
+          <a href="index.html" class="flex items-center">
+            <i class="fas fa-gavel text-primary-600 text-3xl mr-2"></i>
+            <span class="text-2xl font-bold text-gray-800">
+              Bid<span class="text-primary-600">Luxe</span>
+            </span>
+          </a>
+
+          <!-- Navigation & Search (Desktop) -->
+          <div class="hidden md:flex items-center space-x-6">
+            <!-- Nav Links -->
+            <nav class="flex items-center space-x-6">
+              <a
+                href="index.html"
+                class="text-gray-700 hover:text-primary-600 font-medium"
+                >Home</a
+              >
+              <!-- Products Dropdown -->
+              <div class="dropdown relative">
+                <button
+                  class="flex items-center text-gray-700 hover:text-primary-600 font-medium"
+                >
+                  Products <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </button>
+                <div
+                  class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden group-hover:block z-50"
+                >
+                  <div class="py-1">
+                    <a
+                      href="products.html?category=computers"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                      >Computers</a
+                    >
+                    <a
+                      href="products.html?category=antiques"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                      >Antiques</a
+                    >
+                    <a
+                      href="products.html?category=dvd"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                      >DVD</a
+                    >
+                    <a
+                      href="products.html?category=retro-games"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                      >Retro Games</a
+                    >
+                    <a
+                      href="products.html?category=phones"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                      >Phones</a
+                    >
+                    <a
+                      href="products.html?category=art"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                      >Art</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <a
+                href="how-it-works.html"
+                class="text-gray-700 hover:text-primary-600 font-medium"
+                >How It Works</a
+              >
+              <a
+                href="about.html"
+                class="text-gray-700 hover:text-primary-600 font-medium"
+                >About</a
+              >
+              <a
+                href="contact.html"
+                class="text-gray-700 hover:text-primary-600 font-medium"
+                >Contact</a
+              >
+            </nav>
+
+            <!-- 1. Search – flip to expand on the left -->
+            <div class="relative group pr-4">
+              <button class="p-2 focus:outline-none">
+                <i
+                  class="fas fa-search text-gray-500 group-hover:text-primary-600 transition-colors duration-300"
+                ></i>
+              </button>
+              <input
+                type="text"
+                placeholder="Search auctions..."
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 w-0 opacity-0 group-hover:opacity-100 group-hover:w-48 focus:opacity-100 focus:w-48 transition-all duration-300 ease-out rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent px-4 py-2"
+              />
+            </div>
+          </div>
+
+          <!-- Auth Buttons -->
+          <div class="hidden md:flex items-center space-x-4">
+            <a
+              href="login.html"
+              class="text-gray-700 hover:text-primary-600 font-medium"
+              >Login</a
+            >
+            <a
+              href="sell-product.html"
+              class="bg-primary-600 text-white px-6 py-2 rounded-md hover:bg-primary-700 transition duration-300 font-medium"
+              >Sell Your Product</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-gray-700 focus:outline-none"
+          >
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Search (unchanged) -->
+        <div class="md:hidden pb-4">
+          <form class="relative">
+            <input
+              type="text"
+              placeholder="Search for auctions..."
+              class="w-full py-2 pl-4 pr-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+            <button
+              type="submit"
+              class="absolute right-0 top-0 mt-2 mr-4 text-gray-500 hover:text-primary-600"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Mobile Menu (unchanged) -->
+      <div
+        class="md:hidden fixed inset-y-0 left-0 w-64 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50"
+        id="mobile-menu"
+      >
+        <div class="container mx-auto px-4 py-2">
+          <nav class="flex flex-col space-y-3 py-3">
+            <a
+              href="index.html"
+              class="text-gray-700 hover:text-primary-600 font-medium py-2"
+              >Home</a
+            >
+            <div class="relative">
+              <button
+                class="flex justify-between w-full text-gray-700 hover:text-primary-600 font-medium mobile-dropdown-button py-2"
+              >
+                Products <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              <div
+                class="hidden bg-gray-50 rounded-md mt-1 py-2 mobile-dropdown-menu"
+              >
+                <a
+                  href="products.html?category=computers"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                  >Computers</a
+                >
+                <a
+                  href="products.html?category=antiques"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                  >Antiques</a
+                >
+                <a
+                  href="products.html?category=dvd"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                  >DVD</a
+                >
+                <a
+                  href="products.html?category=retro-games"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                  >Retro Games</a
+                >
+                <a
+                  href="products.html?category=phones"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                  >Phones</a
+                >
+                <a
+                  href="products.html?category=art"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                  >Art</a
+                >
+              </div>
+            </div>
+            <a
+              href="how-it-works.html"
+              class="text-gray-700 hover:text-primary-600 font-medium py-2"
+              >How It Works</a
+            >
+            <a
+              href="about.html"
+              class="text-gray-700 hover:text-primary-600 font-medium py-2"
+              >About</a
+            >
+            <a
+              href="contact.html"
+              class="text-gray-700 hover:text-primary-600 font-medium py-2"
+              >Contact</a
+            >
+            <div class="flex space-x-4 pt-2">
+              <a
+                href="login.html"
+                class="text-gray-700 hover:text-primary-600 font-medium"
+                >Login</a
+              >
+              <a
+                href="register.html"
+                class="bg-primary-600 text-white px-4 py-2 rounded-full hover:bg-primary-700 transition duration-300"
+                >Register</a
+              >
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="bg-primary-600 text-white">
+      <div class="container mx-auto px-4 py-16">
+        <h1 class="text-4xl font-bold mb-4" id="page-title">All Auctions</h1>
+        <p class="text-xl opacity-90" id="page-description">
+          Browse through our extensive collection of unique items up for
+          auction.
+        </p>
+      </div>
+    </div>
+
+    <!-- Filter and Sort Section -->
+    <div class="bg-white border-b">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <!-- Category Filter -->
+          <div class="flex items-center space-x-2 mb-4 md:mb-0">
+            <span class="text-gray-600">Category:</span>
+            <select
+              id="category-filter"
+              class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            >
+              <option value="all">All Categories</option>
+              <option value="computers">Computers</option>
+              <option value="antiques">Antiques</option>
+              <option value="dvd">DVD</option>
+              <option value="retro-games">Retro Games</option>
+              <option value="phones">Phones</option>
+              <option value="art">Art</option>
+            </select>
+          </div>
+
+          <!-- Sort Options -->
+          <div class="flex items-center space-x-2">
+            <span class="text-gray-600">Sort by:</span>
+            <select
+              id="sort-options"
+              class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            >
+              <option value="ending-soon">Ending Soon</option>
+              <option value="newest">Newest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <section class="py-12">
+      <div class="container mx-auto px-4">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          id="products-grid"
+        >
+          <!-- Product cards will be dynamically inserted here -->
+
+          <!-- Product Card 1 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://imgs.search.brave.com/GIj3OFf-Tc7knRn9sr6DiKs6oqQJk6uHf9ddM2Gbql4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/anVzdC1mb3VuZC1h/LWxlaWNhLW0zLWNh/bWVyYS1pbi1teS1n/cmFuZGZhdGhlcnMt/Ym94ZXMtd2hhdHMt/djAtN3Z1eXh0b2h4/NW1hMS5qcGc_d2lk/dGg9NDAzMiZmb3Jt/YXQ9cGpwZyZhdXRv/PXdlYnAmcz0yZDk0/NzA1MzM0ZWRlY2Y2/YzhiOTFiNWY3NjM4/NTM1Y2FlOWY1NjMy"
+                alt="Vintage Camera"
+                class="w-full h-64 object-cover"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-primary-600 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Featured</span
+                >
+              </div>
+              <div class="absolute bottom-4 right-4">
+                <span
+                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Ends in 2d 5h</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Vintage Leica Camera
+                </h3>
+                <span
+                  class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded"
+                  >Antiques</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-2">
+                A rare vintage Leica camera from the 1950s in excellent
+                condition with original leather case.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <p class="text-gray-500 text-sm">Current Bid</p>
+                  <p class="text-2xl font-bold text-gray-800">$1,250</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-gray-500 text-sm">Base Price</p>
+                  <p class="text-lg font-semibold text-gray-700">$1,000</p>
+                </div>
+              </div>
+              <a
+                href="product-detail.html?id=1"
+                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
+                >View Auction</a
+              >
+            </div>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://imgs.search.brave.com/f5frTSAh9QTcD2ruOZ-Rd8D2cWyZ-GnYDkCWWPrZsXk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pNS53/YWxtYXJ0aW1hZ2Vz/LmNvbS9zZW8vTmlu/dGVuZG8tNjQtTjY0/LUdhbWUtQnVuZGxl/LU5GTC1CbGl0ei0y/MDAwLTIwMDEtMTk5/Ny1OVFNDLVUtQy1V/Uy1DYW5hZGEtQ2Fy/dF9hOTE0MzAzMS1h/ZTkzLTRlOWItYTVh/Yi0yYWFmNDg4YTYw/MGEuYThhMzFhZmFh/N2YxNmJlNTNlNGQ0/MmM3MGVjNzk4MmMu/anBlZz9vZG5IZWln/aHQ9NTgwJm9kbldp/ZHRoPTU4MCZvZG5C/Zz1GRkZGRkY"
+                alt="Gaming Console"
+                class="w-full h-64 object-cover"
+              />
+              <div class="absolute bottom-4 right-4">
+                <span
+                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Ends in 4d 12h</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Nintendo 64 Bundle
+                </h3>
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded"
+                  >Retro Games</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-2">
+                Original Nintendo 64 console with 4 controllers and 10 classic
+                games including Mario 64 and Zelda.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <p class="text-gray-500 text-sm">Current Bid</p>
+                  <p class="text-2xl font-bold text-gray-800">$320</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-gray-500 text-sm">Base Price</p>
+                  <p class="text-lg font-semibold text-gray-700">$250</p>
+                </div>
+              </div>
+              <a
+                href="product-detail.html?id=2"
+                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
+                >View Auction</a
+              >
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://imgs.search.brave.com/-YrvSlvyTghKc0BxJKdw90ZewIjmNMcfc6_t_TJUxZ8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YXR0LmNvbS9zY21z/YXNzZXRzL2dsb2Jh/bC9kZXZpY2VzL3Bo/b25lcy9hcHBsZS9h/cHBsZS1pcGhvbmUt/MTMtcHJvLW1heC9D/YXJvdXNlbC9zaWVy/cmFibHVlLzYxOTZE/LTEucG5n"
+                alt="Smartphone"
+                class="w-full h-64 object-cover"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Hot</span
+                >
+              </div>
+              <div class="absolute bottom-4 right-4">
+                <span
+                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Ends in 1d 3h</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  iPhone 13 Pro Max
+                </h3>
+                <span
+                  class="bg-purple-100 text-purple-800 text-xs font-semibold px-2 py-1 rounded"
+                  >Phones</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-2">
+                Apple iPhone 13 Pro Max, 256GB, Pacific Blue, unlocked and in
+                perfect condition.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <p class="text-gray-500 text-sm">Current Bid</p>
+                  <p class="text-2xl font-bold text-gray-800">$780</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-gray-500 text-sm">Base Price</p>
+                  <p class="text-lg font-semibold text-gray-700">$650</p>
+                </div>
+              </div>
+              <a
+                href="product-detail.html?id=3"
+                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
+                >View Auction</a
+              >
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://imgs.search.brave.com/4DshLOJeiZwhLpwTp3c0DgzM5eui2rvJ6787PPRFY88/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ldm9s/dmVhcnRpc3QuY29t/L2Jsb2cvd3AtY29u/dGVudC91cGxvYWRz/LzIwMTkvMDIvYWJz/dHJhY3Qtb2lsLXBh/aW50aW5nLTUtMTAy/NHg3MjYuanBn"
+                alt="Abstract Painting"
+                class="w-full h-64 object-cover"
+              />
+              <div class="absolute bottom-4 right-4">
+                <span
+                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Ends in 6d 8h</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Abstract Oil Painting
+                </h3>
+                <span
+                  class="bg-pink-100 text-pink-800 text-xs font-semibold px-2 py-1 rounded"
+                  >Art</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-2">
+                Original abstract oil painting by emerging artist J. Smith, 36"
+                x 48", gallery wrapped canvas.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <p class="text-gray-500 text-sm">Current Bid</p>
+                  <p class="text-2xl font-bold text-gray-800">$420</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-gray-500 text-sm">Base Price</p>
+                  <p class="text-lg font-semibold text-gray-700">$350</p>
+                </div>
+              </div>
+              <a
+                href="product-detail.html?id=4"
+                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
+                >View Auction</a
+              >
+            </div>
+          </div>
+
+          <!-- Product Card 5 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://imgs.search.brave.com/FxNRXJdFRCFm7Cj4yHw4n3fpGQ9CoVHjqbSQHYTwsZg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dGhld2lyZWN1dHRl/ci5jb20vd3AtY29u/dGVudC9tZWRpYS8y/MDIwLzEyL21hY2Jv/b2stMjA0OHB4LTEw/LmpwZz9hdXRvPXdl/YnAmcXVhbGl0eT03/NSZ3aWR0aD0xMDI0"
+                alt="Laptop"
+                class="w-full h-64 object-cover"
+              />
+              <div class="absolute bottom-4 right-4">
+                <span
+                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Ends in 3d 9h</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  MacBook Pro M1
+                </h3>
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded"
+                  >Computers</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-2">
+                Apple MacBook Pro with M1 chip, 16GB RAM, 512GB SSD, Space Gray,
+                like new condition.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <p class="text-gray-500 text-sm">Current Bid</p>
+                  <p class="text-2xl font-bold text-gray-800">$1,050</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-gray-500 text-sm">Base Price</p>
+                  <p class="text-lg font-semibold text-gray-700">$900</p>
+                </div>
+              </div>
+              <a
+                href="product-detail.html?id=5"
+                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
+                >View Auction</a
+              >
+            </div>
+          </div>
+
+          <!-- Product Card 6 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://imgs.search.brave.com/vdyvZ9Ize4HNFP8B_sr73cYt-sZC7bHGddtSDpXocJc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMwLnNyY2RuLmNv/bS93b3JkcHJlc3Mv/d3AtY29udGVudC91/cGxvYWRzLzIwMjIv/MTEvR29kemlsbGEz/LmpwZw"
+                alt="DVD Collection"
+                class="w-full h-64 object-cover"
+              />
+              <div class="absolute bottom-4 right-4">
+                <span
+                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Ends in 5d 14h</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Criterion Collection DVDs
+                </h3>
+                <span
+                  class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-1 rounded"
+                  >DVD</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-2">
+                Complete set of 50 Criterion Collection DVDs including rare and
+                out-of-print titles.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <p class="text-gray-500 text-sm">Current Bid</p>
+                  <p class="text-2xl font-bold text-gray-800">$580</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-gray-500 text-sm">Base Price</p>
+                  <p class="text-lg font-semibold text-gray-700">$500</p>
+                </div>
+              </div>
+              <a
+                href="product-detail.html?id=6"
+                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
+                >View Auction</a
+              >
+            </div>
+          </div>
+
+          <!-- Product Card 7 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://imgs.search.brave.com/F4-PLP1Ia5iGK_2N8fb25hRbofsayVkFjkRWGDOJ5MY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtbmEuc3NsLWlt/YWdlcy1hbWF6b24u/Y29tL2ltYWdlcy9J/LzQxYXQyWnBzeGhM/LmpwZw"
+                alt="Retro Game"
+                class="w-full h-64 object-cover"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-primary-600 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Rare</span
+                >
+              </div>
+              <div class="absolute bottom-4 right-4">
+                <span
+                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Ends in 2d 18h</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Earthbound SNES
+                </h3>
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded"
+                  >Retro Games</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-2">
+                Original Earthbound for SNES with box, manual, and strategy
+                guide. Excellent condition.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <p class="text-gray-500 text-sm">Current Bid</p>
+                  <p class="text-2xl font-bold text-gray-800">$850</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-gray-500 text-sm">Base Price</p>
+                  <p class="text-lg font-semibold text-gray-700">$700</p>
+                </div>
+              </div>
+              <a
+                href="product-detail.html?id=7"
+                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
+                >View Auction</a
+              >
+            </div>
+          </div>
+
+          <!-- Product Card 8 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://imgs.search.brave.com/D72Jy10fOdilqEMl_luk2D6DtOk5BIiUXihjQRMEO0o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzQwMjk0ODgyL3Iv/aWwvNGU3NWUwLzU1/MzE4MjAzMTkvaWxf/NjAweDYwMC41NTMx/ODIwMzE5XzZpa2Mu/anBn"
+                alt="Sculpture"
+                class="w-full h-64 object-cover"
+              />
+              <div class="absolute bottom-4 right-4">
+                <span
+                  class="bg-black bg-opacity-70 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >Ends in 8d 5h</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Bronze Sculpture
+                </h3>
+                <span
+                  class="bg-pink-100 text-pink-800 text-xs font-semibold px-2 py-1 rounded"
+                  >Art</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-2">
+                Contemporary bronze sculpture by local artist, 24" tall, limited
+                edition 3 of 10.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <p class="text-gray-500 text-sm">Current Bid</p>
+                  <p class="text-2xl font-bold text-gray-800">$1,800</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-gray-500 text-sm">Base Price</p>
+                  <p class="text-lg font-semibold text-gray-700">$1,500</p>
+                </div>
+              </div>
+              <a
+                href="product-detail.html?id=8"
+                class="block w-full bg-primary-600 text-white text-center py-3 rounded-md hover:bg-primary-700 transition duration-300"
+                >View Auction</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-12 flex justify-center">
+          <nav class="inline-flex rounded-md shadow">
+            <a
+              href="#"
+              class="py-2 px-4 bg-white border border-gray-300 text-gray-500 hover:bg-gray-50 rounded-l-md"
+              >Previous</a
+            >
+            <a
+              href="#"
+              class="py-2 px-4 bg-primary-600 text-white border border-primary-600"
+              >1</a
+            >
+            <a
+              href="#"
+              class="py-2 px-4 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+              >2</a
+            >
+            <a
+              href="#"
+              class="py-2 px-4 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+              >3</a
+            >
+            <a
+              href="#"
+              class="py-2 px-4 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-r-md"
+              >Next</a
+            >
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <!-- Company Info -->
+          <div>
+            <div class="flex items-center space-x-2 mb-6">
+              <i class="fas fa-gavel text-primary-400 text-3xl"></i>
+              <span class="text-2xl font-bold"
+                >Bid<span class="text-primary-400">Luxe</span></span
+              >
+            </div>
+            <p class="text-gray-400 mb-6">
+              The premier online auction platform for unique and valuable items.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Auctions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="how-it-works.html"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >How It Works</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Categories -->
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Categories</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="products.html?category=computers"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Computers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html?category=antiques"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Antiques</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html?category=retro-games"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Retro Games</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html?category=phones"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Phones</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html?category=art"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Art</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-3 text-gray-400"></i>
+                <span class="text-gray-400"
+                  >123 Auction St, New York, NY 10001</span
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-phone-alt mr-3 text-gray-400"></i>
+                <span class="text-gray-400">+1 (555) 123-4567</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-gray-400"></i>
+                <span class="text-gray-400">info@bidluxe.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 mb-4 md:mb-0">
+              &copy; 2023 BidLuxe. All rights reserved.
+            </p>
+            <div class="flex space-x-6">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Privacy Policy</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Terms of Service</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Cookie Policy</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Loader
+      window.addEventListener("load", () => {
+        // Trigger text animations
+        document.getElementById("bid").classList.add("animate");
+        document.getElementById("luxe").classList.add("animate");
+
+        // Optional delay before fading out
+        setTimeout(() => {
+          const loader = document.getElementById("loader");
+          loader.classList.add("opacity-0");
+          setTimeout(() => {
+            loader.style.display = "none";
+          }, 700); // match fade transition
+        }, 2000); // time to let animation play
+      });
+
+      // Mobile Menu Toggle
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          document
+            .getElementById("mobile-menu-button")
+            .addEventListener("click", () => {
+              mobileMenu.classList.toggle("translate-x-0");
+            });
+        });
+
+      // Mobile Dropdown Toggles
+      document.querySelectorAll(".mobile-dropdown-button").forEach((button) => {
+        button.addEventListener("click", function () {
+          const dropdownMenu = this.nextElementSibling;
+          dropdownMenu.classList.toggle("hidden");
+        });
+      });
+      // 4. Toggle mobile drawer
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", () => {
+          document.getElementById("mobile-menu").classList.toggle("open");
+        });
+
+      // Simple JavaScript for animations (if needed)
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add scroll animations or other interactive elements here
+        const cards = document.querySelectorAll(".card-hover");
+
+        // Add scroll reveal animation (simple version)
+        window.addEventListener("scroll", function () {
+          cards.forEach((card) => {
+            const cardTop = card.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (cardTop < windowHeight - 100) {
+              card.style.opacity = "1";
+              card.style.transform = "translateY(0)";
+            }
+          });
+        });
+
+        // Initialize cards
+        cards.forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+          card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        });
+
+        // Trigger initial scroll check
+        window.dispatchEvent(new Event("scroll"));
+      });
+    </script>
+  </body>
+</html>
