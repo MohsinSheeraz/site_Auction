@@ -105,7 +105,7 @@
     </style>
   </head>
   <body class="bg-gray-50">
-    <!-- Loader (unchanged) -->
+    <!-- Loader -->
     <div
       id="loader"
       class="fixed inset-0 bg-gray-200 z-50 flex items-center justify-center transition-opacity duration-700"
@@ -119,14 +119,14 @@
     </div>
 
     <!-- Header -->
-    <header class="bg-white shadow-md">
+    <header class="bg-white shadow-md sticky top-0 z-10">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-4">
           <!-- Logo -->
           <a href="index.html" class="flex items-center">
             <i class="fas fa-gavel text-primary-600 text-3xl mr-2"></i>
             <span class="text-2xl font-bold text-gray-800">
-              Bid<span class="text-primary-600">Luxe</span>
+              Pak<span class="text-primary-600">Auction</span>
             </span>
           </a>
 
@@ -222,11 +222,11 @@
               class="text-gray-700 hover:text-primary-600 font-medium"
               >Login</a
             >
-            <a
-              href="sell-product.html"
-              class="bg-gradient-to-r from-primary-600 to-secondary-700 text-white px-6 py-2 rounded-md hover:bg-primary-700 transition duration-300 font-medium"
-              >Sell Your Product</a
-            >
+            <a href="sell-product.html" class="sell-your-product_Navbar">
+              <span class="sell-your-product_Navbar-text-container">
+                <span class="sell-your-product_Navbar-text">Sell Product</span>
+              </span>
+            </a>
           </div>
 
           <!-- Mobile Menu Button -->
@@ -256,9 +256,9 @@
         </div>
       </div>
 
-      <!-- Mobile Menu (unchanged) -->
+      <!-- Mobile Menu -->
       <div
-        class="md:hidden fixed inset-y-0 left-0 w-64 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50"
+        class="md:hidden fixed inset-y-0 left-0 w-64 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out z-40 pt-16"
         id="mobile-menu"
       >
         <div class="container mx-auto px-4 py-2">
@@ -341,71 +341,67 @@
       </div>
     </header>
 
-    <!-- Page Header -->
-    <div class="bg-gradient-to-r from-primary-600 to-secondary-700 text-white">
-      <div class="container mx-auto px-4 py-16">
-        <h1 class="text-4xl font-bold mb-4">How It Works</h1>
-        <p class="text-xl opacity-90">
-          Learn how to buy and sell on PakistanAuction, the premier online
-          auction platform.
+    <!-- Buying Intro Hero -->
+    <section
+      class="relative py-20 bg-primary-600 text-white overflow-hidden hero-pattern"
+      data-aos="fade-down"
+    >
+      <!-- Soft background blobs -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div
+          class="absolute top-10 left-1/4 w-72 h-72 bg-primary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
+          style="animation-delay: 0s"
+        ></div>
+        <div
+          class="absolute bottom-10 right-1/4 w-80 h-80 bg-secondary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
+          style="animation-delay: 1s"
+        ></div>
+      </div>
+
+      <!-- Dark overlay for contrast -->
+      <div class="absolute inset-0 bg-black opacity-30"></div>
+
+      <div class="container mx-auto px-4 relative text-center">
+        <h1 class="text-5xl font-bold mb-4">How to Buy on PakistanAuction</h1>
+        <p class="text-lg max-w-2xl mx-auto">
+          A step-by-step guide to finding, bidding, and winning the auctions you
+          love.
         </p>
       </div>
-    </div>
+    </section>
 
-    <!-- Introduction Section -->
-    <!-- <section class="py-16">
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    <!-- buying Process -->
+    <section id="buying" class="py-20 bg-gradient-to-b from-white to-gray-100">
       <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto text-center">
-          <h2 class="text-3xl font-bold text-gray-800 mb-6">
-            Welcome to PakistanAuction
-          </h2>
-          <p class="text-xl text-gray-600 mb-8">
-            PakistanAuction is an online auction platform that connects sellers with
-            serious buyers through our unique bidding system. Our 10% entry fee
-            model ensures that only committed bidders participate, creating a
-            better experience for everyone.
-          </p>
-
-          <div class="flex flex-col sm:flex-row justify-center gap-6 mt-8">
-            <a
-              href="#buying"
-              class="bg-primary-600 text-white px-6 py-3 rounded-md hover:bg-primary-700 transition duration-300"
-              >I Want to Buy</a
-            >
-            <a
-              href="#selling"
-              class="bg-white text-primary-600 border border-primary-600 px-6 py-3 rounded-md hover:bg-primary-50 transition duration-300"
-              >I Want to Sell</a
-            >
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- Buying Process -->
-    <section id="buying" class="py-16 bg-gray-100">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-16">
+        <h2
+          class="text-4xl font-bold text-center mb-20 section-title"
+          id="buyingTitle"
+        >
           Buying on PakistanAuction
         </h2>
 
-        <div class="max-w-4xl mx-auto relative">
+        <div class="max-w-5xl mx-auto relative">
           <!-- Vertical Line -->
           <div class="step-line hidden md:block"></div>
 
           <!-- Step 1 -->
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-16 items-center">
-            <div class="md:col-span-2 order-2 md:order-1">
+          <div
+            class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-24 items-center step"
+          >
+            <div class="md:col-span-2 order-2 md:order-1 step-content">
               <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-                1. Create an Account
+                <span class="text-primary-600 mr-2">01.</span> Create an Account
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-600 mb-6 leading-relaxed">
                 Sign up for a free PakistanAuction account to start browsing
-                auctions and save your favorite items.
+                auctions and save your favorite items. Our simple registration
+                process takes less than a minute to complete.
               </p>
               <a
                 href="register.html"
-                class="text-primary-600 hover:text-primary-700 font-medium flex items-center"
+                class="inline-block px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-all duration-300 cta-button"
               >
                 Register Now
                 <i class="fas fa-arrow-right ml-2"></i>
@@ -413,47 +409,53 @@
             </div>
             <div class="md:col-span-1 flex justify-center order-1 md:order-2">
               <div
-                class="bg-primary-100 text-primary-600 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold"
+                class="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold step-circle buying"
               >
-                1
+                <span class="floating-icon">1</span>
               </div>
             </div>
             <div class="md:col-span-2 order-3">
-              <img
-                src="https://imgs.search.brave.com/B7Zots9ADe0pe7wwlNrH5rxPlIS_q7CV1CIQp1Vivvs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/dWktcG9ydGFsLmRl/L2Ntcy9tYWlsaW50/L21haWxjb20vbWFp/bC9jcmVhdGVfZW1h/aWxfYWNjb3VudC90/ZWFzZXJfMS5zdmc"
-                alt="Create Account"
-                class="rounded-lg"
-              />
+              <div
+                class="rounded-xl overflow-hidden step-image bg-white p-6 card-3d"
+              >
+                <div class="illustration-container">
+                  <img src="images/add-user.png" alt="Create Account" />
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Step 2 -->
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-16 items-center">
+          <div
+            class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-24 items-center step"
+          >
             <div class="md:col-span-2 order-3 md:order-1">
-              <img
-                src="https://imgs.search.brave.com/jNqjVQYyEZd4QHA0qOt7-tSzAvuvj-MbTss9H7Sx0kU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL3ByZW1p/dW0vcG5nLTI1Ni10/aHVtYi9icm93c2lu/Zy03LTM3ODAyNi5w/bmc_Zj13ZWJwJnc9/MjU2"
-                alt="Browse Auctions"
-                class="rounded-lg"
-              />
+              <div class="rounded-xl overflow-hidden step-image bg-white p-6">
+                <div class="illustration-container">
+                  <img src="images/browsing.png" alt="Browse Auctions" />
+                </div>
+              </div>
             </div>
             <div class="md:col-span-1 flex justify-center order-1 md:order-2">
               <div
-                class="bg-primary-100 text-primary-600 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold"
+                class="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold step-circle buying"
               >
-                2
+                <span class="floating-icon">2</span>
               </div>
             </div>
-            <div class="md:col-span-2 order-2 md:order-3">
+            <div class="md:col-span-2 order-2 md:order-3 step-content">
               <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-                2. Browse Auctions
+                <span class="text-primary-600 mr-2">02.</span> Browse Auctions
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-600 mb-6 leading-relaxed">
                 Explore our extensive collection of auctions across various
-                categories. Use filters to find exactly what you're looking for.
+                categories. Use our advanced filters to find exactly what you're
+                looking for and discover unique items you won't find anywhere
+                else.
               </p>
               <a
                 href="products.html"
-                class="text-primary-600 hover:text-primary-700 font-medium flex items-center"
+                class="inline-block px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-all duration-300 cta-button"
               >
                 Browse Auctions
                 <i class="fas fa-arrow-right ml-2"></i>
@@ -462,99 +464,125 @@
           </div>
 
           <!-- Step 3 -->
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-16 items-center">
-            <div class="md:col-span-2 order-2 md:order-1">
+          <div
+            class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-24 items-center step"
+          >
+            <div class="md:col-span-2 order-2 md:order-1 step-content">
               <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-                3. Pay Entry Fee
+                <span class="text-primary-600 mr-2">03.</span> Pay Entry Fee
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-600 mb-6 leading-relaxed">
                 To participate in an auction, you'll need to pay a 10% entry fee
                 based on the item's base price. This ensures only serious
                 bidders participate and creates a better experience for
                 everyone.
               </p>
-              <p class="text-gray-600">
+              <p
+                class="text-gray-600 p-4 bg-indigo-50 rounded-lg border-l-4 border-indigo-500"
+              >
                 The entry fee is non-refundable but demonstrates your commitment
-                to the bidding process.
+                to the bidding process and helps maintain a quality marketplace.
               </p>
             </div>
             <div class="md:col-span-1 flex justify-center order-1 md:order-2">
               <div
-                class="bg-primary-100 text-primary-600 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold"
+                class="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold step-circle buying"
               >
-                3
+                <span class="floating-icon">3</span>
               </div>
             </div>
             <div class="md:col-span-2 order-3">
-              <img
-                src="https://imgs.search.brave.com/jWkFw7ZDePVQNlUIZUsVNn2CrE6X_OEcDa369MJ7rI4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni82MjUvNjI1NTk5/LnBuZz9zZW10PWFp/c19oeWJyaWQ"
-                alt="Pay Entry Fee"
-                class="rounded-lg"
-              />
+              <div class="rounded-xl overflow-hidden step-image bg-white p-6">
+                <div class="illustration-container">
+                  <img src="images/income.png" alt="Pay Entry Fee" />
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Step 4 -->
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-16 items-center">
+          <div
+            class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-24 items-center step"
+          >
             <div class="md:col-span-2 order-3 md:order-1">
-              <img
-                src="https://imgs.search.brave.com/kPunBthHfjY0_79Hp1ErizyCNPRzuTHXN1hvPyH0AxI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL3ByZW1p/dW0vcG5nLTI1Ni10/aHVtYi9wbGFjZS1i/aWQtMTQ2NDYyNC0x/MjQxMjIyLnBuZz9m/PXdlYnAmdz0yNTY"
-                alt="Place Bids"
-                class="rounded-lg"
-              />
+              <div class="rounded-xl overflow-hidden step-image bg-white p-6">
+                <div class="illustration-container">
+                  <img src="images/place.png" alt="Place Bids" />
+                </div>
+              </div>
             </div>
             <div class="md:col-span-1 flex justify-center order-1 md:order-2">
               <div
-                class="bg-primary-100 text-primary-600 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold"
+                class="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold step-circle buying"
               >
-                4
+                <span class="floating-icon">4</span>
               </div>
             </div>
-            <div class="md:col-span-2 order-2 md:order-3">
+            <div class="md:col-span-2 order-2 md:order-3 step-content">
               <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-                4. Place Bids
+                <span class="text-primary-600 mr-2">04.</span> Place Bids
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-600 mb-6 leading-relaxed">
                 Once you've paid the entry fee, you can place bids on the
                 auction. Each auction has a minimum bid increment that you must
-                meet or exceed.
+                meet or exceed to participate in the bidding process.
               </p>
-              <p class="text-gray-600">
-                You'll receive notifications when you're outbid so you can stay
-                competitive.
-              </p>
+              <div
+                class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500"
+              >
+                <p class="text-gray-600">
+                  <i class="fas fa-bell text-indigo-500 mr-2"></i>
+                  You'll receive real-time notifications when you're outbid so
+                  you can stay competitive and never miss an opportunity.
+                </p>
+              </div>
             </div>
           </div>
 
           <!-- Step 5 -->
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
-            <div class="md:col-span-2 order-2 md:order-1">
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center step">
+            <div class="md:col-span-2 order-2 md:order-1 step-content">
               <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-                5. Win & Pay
+                <span class="text-primary-600 mr-2">05.</span> Win & Pay
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-600 mb-6 leading-relaxed">
                 If you're the highest bidder when the auction ends,
                 congratulations! You'll receive a notification and instructions
-                to complete your purchase.
+                to complete your purchase within the specified timeframe.
               </p>
-              <p class="text-gray-600">
-                We offer secure payment options and will coordinate with the
-                seller for shipping or pickup arrangements.
-              </p>
+              <div class="flex flex-col space-y-4">
+                <div class="flex items-start">
+                  <div class="bg-indigo-100 p-2 rounded-full mr-3 mt-1">
+                    <i class="fas fa-lock text-indigo-600"></i>
+                  </div>
+                  <p class="text-gray-600">
+                    We offer secure payment options to protect your transaction.
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <div class="bg-indigo-100 p-2 rounded-full mr-3 mt-1">
+                    <i class="fas fa-truck text-indigo-600"></i>
+                  </div>
+                  <p class="text-gray-600">
+                    We'll coordinate with the seller for shipping or pickup
+                    arrangements.
+                  </p>
+                </div>
+              </div>
             </div>
             <div class="md:col-span-1 flex justify-center order-1 md:order-2">
               <div
-                class="bg-primary-100 text-primary-600 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold"
+                class="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold step-circle buying"
               >
-                5
+                <span class="floating-icon">5</span>
               </div>
             </div>
             <div class="md:col-span-2 order-3">
-              <img
-                src="https://imgs.search.brave.com/yaaADDJi8SGwEZ_A9_IxQi8ZkfsEeIDdk2cuSfiN6VI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4w/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvYmFua2luZy0x/MTYvNTEyL3BheW1l/bnQtdGVybWluYWwt/Y2FyZC10cmFuc2Fj/dGlvbi1tb25leS1w/YXktbWFjaGluZS0x/MjgucG5n"
-                alt="Win and Pay"
-                class="rounded-lg"
-              />
+              <div class="rounded-xl overflow-hidden step-image bg-white p-6">
+                <div class="illustration-container">
+                  <img src="images/mobile-payment.png" alt="Win and Pay" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -562,28 +590,37 @@
     </section>
 
     <!-- Selling Process -->
-    <section id="selling" class="py-16">
+    <section id="selling" class="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-16">
+        <h2
+          class="text-4xl font-bold text-center mb-20 section-title selling"
+          id="sellingTitle"
+        >
           Selling on PakistanAuction
         </h2>
 
-        <div class="max-w-4xl mx-auto relative">
+        <div class="max-w-5xl mx-auto relative">
           <!-- Vertical Line -->
           <div class="step-line hidden md:block"></div>
 
           <!-- Step 1 -->
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-16 items-center">
-            <div class="md:col-span-2 order-2 md:order-1">
+          <div
+            class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-24 items-center step"
+          >
+            <div class="md:col-span-2 order-2 md:order-1 step-content">
               <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-                1. Submit A Seller Form
+                <span class="text-green-600 mr-2">01.</span> Submit A Seller
+                Form
               </h3>
-              <p class="text-gray-600 mb-4">
-                Register yourself or login to enable the Selling Form
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Register yourself or login to enable the Selling Form. Our
+                seller verification process ensures a trusted marketplace for
+                all users and helps you establish credibility with potential
+                buyers.
               </p>
               <a
                 href="register.html"
-                class="text-primary-600 hover:text-primary-700 font-medium flex items-center"
+                class="inline-block px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-all duration-300 cta-button"
               >
                 Become a Seller
                 <i class="fas fa-arrow-right ml-2"></i>
@@ -591,103 +628,119 @@
             </div>
             <div class="md:col-span-1 flex justify-center order-1 md:order-2">
               <div
-                class="bg-secondary-100 text-secondary-600 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold"
+                class="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold step-circle selling"
               >
-                1
+                <span class="floating-icon">1</span>
               </div>
             </div>
             <div class="md:col-span-2 order-3">
-              <img
-                src="https://imgs.search.brave.com/_GV6UF7Aznboy3fCzSJgP_nEp68lFw-qUxe1jiP-tv8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE2LzQxLzMz/LzM2MF9GXzIxNjQx/MzM4N19SMVF3a09Z/cndZeEQyb0lXSUd4/YzBVS1JsSDNyYWJ2/cy5qcGc"
-                alt="Create Seller Account"
-                class="rounded-lg"
-              />
+              <div class="rounded-xl overflow-hidden step-image bg-white p-6">
+                <div class="illustration-container">
+                  <img src="images/job.png" alt="Create Seller Account" />
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Step 2 -->
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-16 items-center">
+          <div
+            class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-24 items-center step"
+          >
             <div class="md:col-span-2 order-3 md:order-1">
-              <img
-                src="https://i.pinimg.com/originals/fb/11/55/fb1155591460c455edf3ced130b127b9.gif"
-                alt="List Item"
-                class="rounded-lg"
-              />
+              <div class="rounded-xl overflow-hidden step-image bg-white p-6">
+                <div class="illustration-container">
+                  <img
+                    src="images/notification-bell.png"
+                    alt="WhatsApp Notification"
+                  />
+                </div>
+              </div>
             </div>
             <div class="md:col-span-1 flex justify-center order-1 md:order-2">
               <div
-                class="bg-secondary-100 text-secondary-600 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold"
+                class="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold step-circle selling"
               >
-                2
+                <span class="floating-icon">2</span>
               </div>
             </div>
-            <div class="md:col-span-2 order-2 md:order-3">
+            <div class="md:col-span-2 order-2 md:order-3 step-content">
               <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-                2. WhatsApp Notification
+                <span class="text-green-600 mr-2">02.</span> WhatsApp
+                Notification
               </h3>
-              <p class="text-gray-600 mb-4">
-                My Submitting the form A WhatsApp chat message will be send to
-                PakistanAuction management to review your product
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                By submitting the form, a WhatsApp chat message will be sent to
+                PakistanAuction management to review your product. Our team will
+                evaluate your item and respond promptly with approval status.
               </p>
+              <div
+                class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500"
+              >
+                <p class="text-gray-600">
+                  <i class="fab fa-whatsapp text-green-500 mr-2"></i>
+                  Our team typically responds within 24 hours to expedite your
+                  selling process.
+                </p>
+              </div>
             </div>
           </div>
 
           <!-- Step 3 -->
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-16 items-center">
-            <div class="md:col-span-2 order-2 md:order-1">
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center step">
+            <div class="md:col-span-2 order-2 md:order-1 step-content">
               <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-                3. Monitor the Product
+                <span class="text-green-600 mr-2">03.</span> Monitor the Product
               </h3>
-              <p class="text-gray-600 mb-4">
-                After Notification, You would also get the message that whether
-                you can sell the product on our platform
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                After notification, you'll receive a message confirming whether
+                you can sell the product on our platform. Once approved, you can
+                track bidding activity and engage with potential buyers.
               </p>
+              <div class="flex flex-col space-y-4">
+                <div class="flex items-start">
+                  <div class="bg-green-100 p-2 rounded-full mr-3 mt-1">
+                    <i class="fas fa-chart-line text-green-600"></i>
+                  </div>
+                  <p class="text-gray-600">
+                    Track real-time bidding activity on your items
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <div class="bg-green-100 p-2 rounded-full mr-3 mt-1">
+                    <i class="fas fa-comments text-green-600"></i>
+                  </div>
+                  <p class="text-gray-600">
+                    Communicate with bidders to answer questions
+                  </p>
+                </div>
+              </div>
             </div>
             <div class="md:col-span-1 flex justify-center order-1 md:order-2">
               <div
-                class="bg-secondary-100 text-secondary-600 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold"
+                class="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold step-circle selling"
               >
-                3
+                <span class="floating-icon">3</span>
               </div>
             </div>
             <div class="md:col-span-2 order-3">
-              <img
-                src="https://imgs.search.brave.com/ghfDSt-yRmNDXAEq2n48Jy0SVNbpjP13grUzXCDHBhM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzEyLzM2LzgyLzQ1/LzM2MF9GXzEyMzY4/MjQ1NjZfOTdXcHJK/RzBUWlI4cmpuR01T/bGRjNnBpWDFOMGFv/eHQuanBn"
-                alt="Monitor Auction"
-                class="rounded-lg"
-              />
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
-            <div class="md:col-span-2 order-3 md:order-1">
-              <img
-                src="https://imgs.search.brave.com/8-qTO26Ir3Qd02Fg4EJ7KGkOgY-2tAEPJeY1XN6L2aE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA1LzQ5LzYyLzA4/LzM2MF9GXzU0OTYy/MDg5Nl9xVmVkcVJD/Z2RXTWlnamRGYnE1/OTl1eFdHWFpHY0Np/Ri5qcGc"
-                alt="Complete Sale"
-                class="rounded-lg"
-              />
-            </div>
-            <div class="md:col-span-1 flex justify-center order-1 md:order-2">
-              <div
-                class="bg-secondary-100 text-secondary-600 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold"
-              >
-                4
+              <div class="rounded-xl overflow-hidden step-image bg-white p-6">
+                <div class="illustration-container">
+                  <img src="images/monitoring.png" alt="Monitor Auction" />
+                </div>
               </div>
-            </div>
-            <div class="md:col-span-2 order-2 md:order-3">
-              <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-                4. Last Step
-              </h3>
-              <p class="text-gray-600 mb-4">
-                After Monitoring if your product is eligible to sell than your
-                product will be listed and ready for auction
-              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      class="fixed bottom-8 right-8 bg-primary-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform scale-0 transition-all duration-300 hover:bg-primary-700"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white pt-16 pb-8">
@@ -865,6 +918,153 @@
       </div>
     </footer>
     <script>
+      // Intersection Observer for animations
+      document.addEventListener("DOMContentLoaded", function () {
+        // Progress bar
+        window.addEventListener("scroll", function () {
+          const winScroll =
+            document.body.scrollTop || document.documentElement.scrollTop;
+          const height =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          document.getElementById("progressBar").style.width = scrolled + "%";
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById("backToTop");
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 300) {
+            backToTopButton.classList.remove("scale-0");
+            backToTopButton.classList.add("scale-100");
+          } else {
+            backToTopButton.classList.remove("scale-100");
+            backToTopButton.classList.add("scale-0");
+          }
+        });
+
+        backToTopButton.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Section title animations
+        const buyingTitle = document.getElementById("buyingTitle");
+        const sellingTitle = document.getElementById("sellingTitle");
+
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.5,
+        };
+
+        // Observer for section titles
+        const titleObserver = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            } else {
+              entry.target.classList.remove("active");
+            }
+          });
+        }, observerOptions);
+
+        titleObserver.observe(buyingTitle);
+        titleObserver.observe(sellingTitle);
+
+        // Observer for steps
+        const steps = document.querySelectorAll(".step");
+
+        const stepObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const step = entry.target;
+                const circle = step.querySelector(".step-circle");
+                const content = step.querySelector(".step-content");
+                const image = step.querySelector(".step-image");
+
+                // Add active class with delay for staggered animation
+                setTimeout(() => {
+                  circle.classList.add("active");
+                }, 100);
+
+                setTimeout(() => {
+                  content.classList.add("active");
+                }, 300);
+
+                setTimeout(() => {
+                  if (image) image.classList.add("active");
+                }, 500);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        steps.forEach((step) => {
+          stepObserver.observe(step);
+        });
+
+        // Add hover effect to step circles
+        const circles = document.querySelectorAll(".step-circle");
+        circles.forEach((circle) => {
+          circle.addEventListener("mouseenter", function () {
+            this.classList.add("active");
+          });
+
+          circle.addEventListener("mouseleave", function () {
+            if (
+              !this.closest(".step")
+                .querySelector(".step-content")
+                .classList.contains("active")
+            ) {
+              this.classList.remove("active");
+            }
+          });
+        });
+
+        // Add 3D tilt effect to cards
+        const cards = document.querySelectorAll(".card-3d");
+        cards.forEach((card) => {
+          card.addEventListener("mousemove", function (e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const xc = rect.width / 2;
+            const yc = rect.height / 2;
+
+            const dx = x - xc;
+            const dy = y - yc;
+
+            this.style.transform = `rotateY(${dx / 20}deg) rotateX(${
+              -dy / 20
+            }deg)`;
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "rotateY(0deg) rotateX(0deg)";
+          });
+        });
+
+        // Initialize the first step to be active on page load
+        setTimeout(() => {
+          const firstStep = document.querySelector(".step");
+          const firstCircle = firstStep.querySelector(".step-circle");
+          const firstContent = firstStep.querySelector(".step-content");
+          const firstImage = firstStep.querySelector(".step-image");
+
+          firstCircle.classList.add("active");
+          firstContent.classList.add("active");
+          if (firstImage) firstImage.classList.add("active");
+
+          buyingTitle.classList.add("active");
+        }, 500);
+      });
+
       // Loader
       window.addEventListener("load", () => {
         // Trigger text animations

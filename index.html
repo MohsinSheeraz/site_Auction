@@ -14,6 +14,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <script>
       tailwind.config = {
@@ -121,7 +125,7 @@
     </div>
 
     <!-- Header -->
-    <header class="bg-white shadow-md">
+    <header class="bg-white shadow-md sticky top-0 z-10">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-4">
           <!-- Logo -->
@@ -258,9 +262,9 @@
         </div>
       </div>
 
-      <!-- Mobile Menu (unchanged) -->
+      <!-- Mobile Menu -->
       <div
-        class="md:hidden fixed inset-y-0 left-0 w-64 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50"
+        class="md:hidden fixed inset-y-0 left-0 w-64 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out z-40 pt-16"
         id="mobile-menu"
       >
         <div class="container mx-auto px-4 py-2">
@@ -345,6 +349,7 @@
     <!-- Hero Section -->
     <section
       class="relative bg-primary-700 text-white overflow-hidden hero-pattern"
+      data-aos="fade-up"
     >
       <!-- Decorative Elements -->
       <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
@@ -460,7 +465,7 @@
     </section>
 
     <!-- Explore Our Store - Clean Redesign -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white" data-aos="fade-up">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
           <h2 class="text-4xl font-bold text-gray-900">Explore Our Store</h2>
@@ -565,7 +570,7 @@
     </section>
 
     <!-- Sell To Us Section -->
-    <section class="py-20 bg-white relative overflow-hidden">
+    <section class="py-20 bg-white relative overflow-hidden" data-aos="fade-up">
       <!-- Decorative Elements -->
       <div
         class="absolute -top-24 -right-24 w-96 h-96 bg-primary-100 rounded-full opacity-20"
@@ -751,74 +756,50 @@
     </section>
 
     <!-- Featured Categories -->
-    <section class="py-20 bg-white relative overflow-hidden">
-      <!-- Decorative Elements -->
-      <div
-        class="absolute top-0 right-0 w-64 h-64 bg-primary-50 rounded-full opacity-70 -mr-32 -mt-32"
-      ></div>
-      <div
-        class="absolute bottom-0 left-0 w-64 h-64 bg-secondary-50 rounded-full opacity-70 -ml-32 -mb-32"
-      ></div>
+    <section
+      class="relative py-20 bg-primary-700 text-white overflow-hidden hero-pattern"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
+      <!-- 1. Blobs (copy from hero) -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div
+          class="absolute top-20 left-10 w-64 h-64 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
+          style="animation-delay: 0s"
+        ></div>
+        <div
+          class="absolute bottom-10 right-10 w-72 h-72 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
+          style="animation-delay: 1.5s"
+        ></div>
+      </div>
 
+      <!-- 2. Dark overlay for extra contrast -->
+      <div class="absolute inset-0 bg-black opacity-30"></div>
+
+      <!-- 3. Your content, now on a patterned, tinted canvas -->
       <div class="container mx-auto px-4 relative z-10">
         <div class="text-center mb-16">
           <span
-            class="inline-block px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-4"
+            class="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4 text-white"
             >Discover</span
           >
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
             Featured Categories
           </h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">
+          <p class="text-gray-200 max-w-2xl mx-auto">
             Browse through our most popular categories and find exactly what
-            you're looking for.
+            you’re looking for.
           </p>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          <!-- Category 1 -->
+          <!-- Example Category Card: -->
           <a href="products.html?category=computers" class="group">
             <div
-              class="bg-white rounded-xl p-6 text-center transition duration-300 group-hover:bg-primary-50 border border-gray-100 hover:border-primary-200 shadow-sm hover:shadow-md transform hover:-translate-y-1"
+              class="bg-white rounded-xl p-6 text-center transition duration-300 group-hover:bg-primary-600 border border-white shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               <div
-                class="bg-gradient-to-br from-primary-100 to-primary-200 text-primary-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-300 group-hover:scale-110 transition-all duration-300"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-10 w-10"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h3
-                class="text-lg font-semibold text-gray-800 group-hover:text-primary-600 transition duration-300"
-              >
-                Computers
-              </h3>
-              <p
-                class="text-gray-500 mt-2 text-sm group-hover:text-primary-500 transition duration-300"
-              >
-                120+ items
-              </p>
-            </div>
-          </a>
-
-          <!-- Category 2 -->
-          <a href="products.html?category=antiques" class="group">
-            <div
-              class="bg-white rounded-xl p-6 text-center transition duration-300 group-hover:bg-primary-50 border border-gray-100 hover:border-primary-200 shadow-sm hover:shadow-md transform hover:-translate-y-1"
-            >
-              <div
-                class="bg-gradient-to-br from-primary-100 to-primary-200 text-primary-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-300 group-hover:scale-110 transition-all duration-300"
+                class="bg-gradient-to-br from-primary-100 to-primary-200 text-primary-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -836,18 +817,51 @@
                 </svg>
               </div>
               <h3
-                class="text-lg font-semibold text-gray-800 group-hover:text-primary-600 transition duration-300"
+                class="text-lg font-semibold mb-1 text-gray-800 group-hover:text-white transition"
+              >
+                Computers
+              </h3>
+              <p
+                class="text-sm text-gray-600 group-hover:text-gray-200 transition"
+              >
+                120+ items
+              </p>
+            </div>
+          </a>
+          <a href="products.html?category=antiques" class="group">
+            <div
+              class="bg-white rounded-xl p-6 text-center transition duration-300 group-hover:bg-primary-600 border border-white shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              <div
+                class="bg-gradient-to-br from-primary-100 to-primary-200 text-primary-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-semibold mb-1 text-gray-800 group-hover:text-white transition"
               >
                 Antiques
               </h3>
               <p
-                class="text-gray-500 mt-2 text-sm group-hover:text-primary-500 transition duration-300"
+                class="text-sm text-gray-600 group-hover:text-gray-200 transition"
               >
-                85+ items
+                Antiques
               </p>
             </div>
           </a>
-
           <!-- Category 3 -->
           <a href="products.html?category=dvd" class="group">
             <div
@@ -883,7 +897,6 @@
               </p>
             </div>
           </a>
-
           <!-- Category 4 -->
           <a href="products.html?category=retro-games" class="group">
             <div
@@ -955,7 +968,6 @@
               </p>
             </div>
           </a>
-
           <!-- Category 6 -->
           <a href="products.html?category=art" class="group">
             <div
@@ -996,14 +1008,13 @@
         <div class="flex justify-center mt-12">
           <a
             href="categories.html"
-            class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition duration-300 group"
+            class="inline-flex items-center text-white font-medium hover:text-primary-200 transition"
           >
             View All Categories
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
-              viewBox="0 0 20 20"
+              class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform"
               fill="currentColor"
+              viewBox="0 0 20 20"
             >
               <path
                 fill-rule="evenodd"
@@ -1017,7 +1028,10 @@
     </section>
 
     <!-- Featured Auctions -->
-    <section class="py-20 bg-gray-50 relative overflow-hidden">
+    <section
+      class="py-20 bg-gray-50 relative overflow-hidden"
+      data-aos="fade-up"
+    >
       <!-- Decorative Elements -->
       <div class="absolute top-0 left-0 w-full h-full">
         <div
@@ -1715,7 +1729,7 @@
     </section>
 
     <!-- How It Works -->
-    <section class="py-20 bg-white relative overflow-hidden">
+    <section class="py-20 bg-white relative overflow-hidden" data-aos="fade-up">
       <!-- Decorative Elements -->
       <div
         class="absolute top-0 right-0 w-full h-full overflow-hidden opacity-10"
@@ -2029,7 +2043,10 @@
       </div>
     </section>
     <!-- Testimonials -->
-    <section class="py-20 bg-gray-50 relative overflow-hidden">
+    <section
+      class="py-20 bg-gray-50 relative overflow-hidden"
+      data-aos="fade-up"
+    >
       <!-- Decorative Elements -->
       <div class="absolute inset-0 overflow-hidden">
         <svg
@@ -2386,7 +2403,8 @@
 
     <!-- Newsletter -->
     <section
-      class="py-20 bg-gradient-to-r from-primary-600 to-secondary-700 text-white relative overflow-hidden"
+      class="py-20 bg-primary-700 text-white relative overflow-hidden hero-pattern"
+      data-aos="fade-up"
     >
       <!-- Decorative Elements -->
       <div class="absolute inset-0 overflow-hidden">
@@ -2505,6 +2523,14 @@
       </div>
     </section>
 
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      class="fixed bottom-8 right-8 bg-primary-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform scale-0 transition-all duration-300 hover:bg-primary-700"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white pt-16 pb-8">
       <div class="container mx-auto px-4">
@@ -2514,7 +2540,7 @@
             <div class="flex items-center space-x-2 mb-6">
               <i class="fas fa-gavel text-primary-400 text-3xl"></i>
               <span class="text-2xl font-bold"
-                >Bid<span class="text-primary-400">Luxe</span></span
+                >Pak<span class="text-primary-400">Auction</span></span
               >
             </div>
             <p class="text-gray-400 mb-6">
@@ -2682,7 +2708,6 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <script>
       // Loader
       window.addEventListener("load", () => {
@@ -2754,7 +2779,11 @@
         // Trigger initial scroll check
         window.dispatchEvent(new Event("scroll"));
       });
-      AOS.init({ duration: 700, once: true });
+      AOS.init({
+        once: true, // animate only once on scroll
+        duration: 800, // animation duration in ms
+        easing: "ease-in-out", // easing function
+      });
     </script>
   </body>
 </html>

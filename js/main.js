@@ -162,3 +162,22 @@ function renderProductDetail() {
     });
   }
 }
+
+// Back to top button
+const backToTopButton = document.getElementById("backToTop");
+window.addEventListener("scroll", function () {
+  if (window.scrollY > 300) {
+    backToTopButton.classList.remove("scale-0");
+    backToTopButton.classList.add("scale-100");
+  } else {
+    backToTopButton.classList.remove("scale-100");
+    backToTopButton.classList.add("scale-0");
+  }
+});
+
+backToTopButton.addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
